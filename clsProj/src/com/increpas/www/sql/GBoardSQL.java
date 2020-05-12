@@ -37,6 +37,14 @@ public class GBoardSQL {
 			buff.append("    m.ano = a.ano "); 
 			buff.append("    AND id = ? ");
 			break;
+		case ADD_DATA:
+			buff.append("INSERT INTO ");
+			buff.append("    gboard(gno, gmno, gbody) ");
+			buff.append("VALUES( ");
+			buff.append("    (SELECT NVL(MAX(GNO)+1, 1000) FROM gboard), ");
+			buff.append("    (SELECT mno FROM MEMBER WHERE id = ? ), ? ");
+			buff.append(")");
+			break;
 		}
 		
 		return buff.toString();

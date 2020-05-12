@@ -9,7 +9,19 @@
 <link rel="stylesheet" href="/clsProj/css/user.css">
 <script type="text/javascript" src="/clsProj/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript">
-
+	$(function(){
+		$('#sbtn').click(function(){
+			var str = $('#body').val();
+			if(!str){
+				return;
+			}
+			$('#frm').submit();
+		});
+		
+		$('#hbtn').click(function(){
+			$(location).attr('href', '/clsProj/main.cls');
+		});
+	});
 </script>
 </head>
 <body>
@@ -21,14 +33,14 @@
 					<div class="w3-col m1 w3-right w3-button w3-tiny w3-blue" id="">Login</div>
 				</c:if>
 				<c:if test="${not empty SID}">
-					<div class="w3-col m1 w3-right w3-button w3-tiny w3-amber" id="logout">Logout</div>
+					<div class="w3-col m1 w3-right w3-button w3-tiny w3-red" id="logout">Logout</div>
 				</c:if>
 				
-				<div class="w3-col m1 w3-right w3-button w3-tiny w3-green">Home</div>
+				<div class="w3-col m1 w3-left w3-button w3-tiny w3-green" id="hbtn">Home</div>
 			</div>
 
 			<c:if test="${CNT ne 1}">
-				<form class="w3-col w3-border w3-margin-bottom" id="frm" method="post" action="./gBoardProc.cls">
+				<form class="w3-col w3-border w3-margin-bottom" id="frm" method="post" action="/clsProj/gBoard/gBoardProc.cls">
 					<div class="w3-col w-100 w3-center pd-10 w3-border-right">
 						<img class="h-80p w-auto" src="/clsProj/img/${AVT}">
 					</div>
@@ -38,7 +50,7 @@
 							<div class="w3-btn w3-padding-small w3-right w3-red" id="sbtn">submit</div>
 						</div>
 						<div class="w3-col">
-							<textarea id="body" class="w3-padding" cols="59" rows="2" style="margin-top: 3px; resize: none;"></textarea>
+							<textarea id="body" name="body" class="w3-padding" cols="59" rows="2" style="margin-top: 3px; resize: none;" required></textarea>
 						</div>
 					</div>
 				</form>

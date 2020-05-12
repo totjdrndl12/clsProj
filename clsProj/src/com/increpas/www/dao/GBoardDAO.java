@@ -125,4 +125,29 @@ public class GBoardDAO {
 		// 7. 내보내고
 		return avt;
 	}
+	
+	// 방명록 데이터베이스 입력 전담 처리 함수
+	public int addData(String id, String body) {
+		int cnt = 0 ;
+		// 1.
+		con = db.getCon();
+		// 2.
+		String sql = gSQL.getSQL(gSQL.ADD_DATA);
+		// 3. 
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 4.
+			pstmt.setString(1, id);
+			pstmt.setString(2, body);
+			// 5. 
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		// 6.
+		return cnt;
+	}
 }
