@@ -39,18 +39,18 @@
 				<div class="w3-col m1 w3-left w3-button w3-tiny w3-green" id="hbtn">Home</div>
 			</div>
 
-			<c:if test="${CNT ne 1}">
+			<c:if test="${(CNT ne 1) && (not empty SID)}">
 				<form class="w3-col w3-border w3-margin-bottom" id="frm" method="post" action="/clsProj/gBoard/gBoardProc.cls">
-					<div class="w3-col w-100 w3-center pd-10 w3-border-right">
-						<img class="h-80p w-auto" src="/clsProj/img/${AVT}">
+					<div class="w3-col w-100 w3-center pd-10">
+						<img class="h-80p w-auto w3-circle" src="/clsProj/img/${AVT}">
 					</div>
-					<div class="w3-rest pdh-10">
+					<div class="w3-rest pdh-10 w3-border-left">
 						<div class="w3-col w3-border-bottom pd-5">
 							<h5 class="w3-half w3-left-align" style="margin: 0px; padding-left: 10px"><b>${SID}</b></h5>
 							<div class="w3-btn w3-padding-small w3-right w3-red" id="sbtn">submit</div>
 						</div>
 						<div class="w3-col">
-							<textarea id="body" name="body" class="w3-padding" cols="59" rows="2" style="margin-top: 3px; resize: none;" required></textarea>
+							<textarea id="body" name="body" class="w3-padding" cols="58.5" rows="2" style="margin-top: 3px; resize: none;" required></textarea>
 						</div>
 					</div>
 				</form>
@@ -59,7 +59,7 @@
 			<c:forEach var="vo" items="${LIST}">
 				<div class="w3-col w3-border w3-margin-bottom" id="${vo.gno}">
 					<div class="w3-col w-100 w3-center pd-10 w3-border-right">
-						<img class="h-80p w-auto" src="/clsProj/img/${vo.avatar}">
+						<img class="h-80p w-auto w3-circle" src="/clsProj/img/${vo.avatar}">
 					</div>
 					<div class="w3-rest pdh-10">
 						<div class="w3-col w3-border-bottom">
