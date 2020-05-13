@@ -32,6 +32,8 @@
 				url = '/clsProj/member/joinForm.cls';
 			} else if(tid == 'gBoard'){
 				url = '/clsProj/gBoard/gBoardList.cls';
+			} else if(tid == 'reBoard'){
+				url = '/clsProj/reBoard/reBoard.cls';
 			}
 			
 			$(location).attr('href', url);
@@ -51,6 +53,7 @@
 				<div class="btn w3-button w3-red inblock w-150" id="logout">Logout</div>
 				<div class="btn w3-button w3-pink inblock w-150" id="gBoard">gBoard</div>
 			</c:if>
+			<div class="btn w3-button w3-deep-purple inblock w-150" id="reBoard">댓글게시판</div>
 		</div>
 	</div>
 </body>

@@ -21,6 +21,10 @@
 		$('#hbtn').click(function(){
 			$(location).attr('href', '/clsProj/main.cls');
 		});
+		
+		$('#lbtn').click(function(){
+			$(location).attr('href', '/clsProj/member/login.cls');
+		});
 	});
 </script>
 </head>
@@ -30,7 +34,7 @@
 			<h2 class="w3-blue w3-center w3-padding">댓글 게시판</h2>
 			<div class="w3-col w3-margin-bottom">
 				<c:if test="${empty SID}">
-					<div class="w3-col m1 w3-right w3-button w3-tiny w3-blue" id="">Login</div>
+					<div class="w3-col m1 w3-right w3-button w3-tiny w3-blue" id="lbtn">Login</div>
 				</c:if>
 				<c:if test="${not empty SID}">
 					<div class="w3-col m1 w3-right w3-button w3-tiny w3-lime" id="write">Write</div>
@@ -57,9 +61,13 @@
 								<h6 class="w3-padding" id="body">${data.body}</h6>
 							</div>
 							<div class="w3-col" style="margin-bottom: 0px;" id="${data.reno}">
-								<span class="w3-button w3-red w3-right dbtn" style="padding: 3px">삭제</span>
-								<span class="w3-button w3-orange w3-right ebtn" style="padding: 3px" id="">수정</span>
-								<span class="w3-button w3-blue w3-right rbtn" style="padding: 3px" id="">댓글</span>
+								<c:if test="${SID eq data.id}">
+									<span class="w3-button w3-small w-100 w3-red w3-right dbtn" style="padding: 3px">삭제</span>
+									<span class="w3-button w3-small w-100 w3-orange w3-right ebtn" style="padding: 3px" id="">수정</span>
+								</c:if>
+								<c:if test="${not empty SID}">
+									<span class="w3-button w3-small w-100 inblock  w3-blue w3-right rbtn" style="padding: 3px" id="">댓글</span>
+								</c:if>
 							</div>
 						</div>
 					</div>
