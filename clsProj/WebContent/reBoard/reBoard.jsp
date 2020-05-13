@@ -41,28 +41,30 @@
 			</div>
 
 			<%-- 
-			<c:forEach var="vo" items="${LIST}"> 
-			</c:forEach>
 			--%>
-				<div class="w3-col w3-border w3-margin-bottom" id="">
-					<div class="w3-col w-100 w3-center pd-10 w3-border-right">
-						<img class="h-80p w-auto w3-border" src="/clsProj/img/img_avatar1.png">
-						<h5 class="w3-col w3-center"><b>euns</b></h5>
-					</div>
-					<div class="w3-rest pdh-10">
-						<div class="w3-col w3-border-bottom w3-border-light-blue">
-							<h6 class="w3-half w3-left-align w3-text-grey" style="margin: 0px; padding-right: 10px"><small>2020년 05월 13일 09:50</small></h6>
+			<c:forEach var="data" items="${LIST}">
+				<div style="padding-left: ${(data.step - 1) * 100}px;">
+					<div class="w3-col w3-border w3-margin-bottom" id="">
+						<div class="w3-col w-100 w3-center pd-10 w3-border-right">
+							<img class="h-80p w-auto w3-border" src="/clsProj/img/${data.avatar}">
+							<h5 class="w3-col w3-center"><b>${data.id}</b></h5>
 						</div>
-						<div class="w3-col w3-border-bottom w3-margin-bottom w3-border-khaki">
-							<h6 class="w3-padding" id="body">원글입니다.</h6>
-						</div>
-						<div class="w3-col" style="margin-bottom: 0px;">
-							<span class="w3-button w3-red w3-right" style="padding: 3px">삭제</span>
-							<span class="w3-button w3-orange w3-right" style="padding: 3px">수정</span>
-							<span class="w3-button w3-blue w3-right" style="padding: 3px">댓글</span>
+						<div class="w3-rest pdh-10">
+							<div class="w3-col w3-border-bottom w3-border-light-blue">
+								<h6 class="w3-half w3-left-align w3-text-grey" style="margin: 0px; padding-right: 10px"><small>${data.sDate}</small></h6>
+							</div>
+							<div class="w3-col w3-border-bottom w3-margin-bottom w3-border-khaki">
+								<h6 class="w3-padding" id="body">${data.body}</h6>
+							</div>
+							<div class="w3-col" style="margin-bottom: 0px;" id="${data.reno}">
+								<span class="w3-button w3-red w3-right dbtn" style="padding: 3px">삭제</span>
+								<span class="w3-button w3-orange w3-right ebtn" style="padding: 3px" id="">수정</span>
+								<span class="w3-button w3-blue w3-right rbtn" style="padding: 3px" id="">댓글</span>
+							</div>
 						</div>
 					</div>
 				</div>
+			</c:forEach>
 			
 			<c:if test="${empty LIST}">
 				<div class="w3-col w3-border w3-margin-bottom w3-card" id="gmsg">

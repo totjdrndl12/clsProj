@@ -23,3 +23,14 @@
 	컨트롤러 :	com.increpas.www.controller.member.LogoutProc
 	뷰	  : redirect:/clsProj/main.cls
 ------------------------------------------------------------------
+
+# 방명록 요청 처리
+
+------------------------------------------------------------------
+# 댓글게시판 요청 처리
+1. 댓글게시판 리스트보기 처리 요청
+	요청내용 : /reBoard/reBoard.cls
+	파라미터 :	무
+	컨트롤러 :	com.increpas.www.controller.reBoard.ReBoardList
+	뷰	  : /reBoard/reBoard.jsp
+------------------------------------------------------------------
