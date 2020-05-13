@@ -14,19 +14,21 @@ public class ReBoardSQL {
 			buff.append("    	ROWNUM RNO, R.* ");
 			buff.append("	FROM ");
 			buff.append("		(SELECT  ");
-			buff.append("    		RENO, REMNO, REBODY, REUPNO, REDATE, LEVEL step ");
+			buff.append("    		RENO, REMNO, REBODY, REUPNO, REDATE, (LEVEL - 1) step, ");
+			buff.append("    		id, savename ");
 			buff.append("		FROM ");
-			buff.append("    		reboard ");
+			buff.append("    		reboard re, member m, avatar a ");
 			buff.append("		WHERE ");
-			buff.append("   		isshow = 'Y' ");
+			buff.append("   		re.isshow = 'Y' ");
+			buff.append("   		AND m.ano = a.ano ");
+			buff.append("   		AND remno = mno ");
 			buff.append("		START WITH ");
 			buff.append("    		REUPNO IS NULL ");
 			buff.append("		CONNECT BY ");
-			buff.append("    		PRIOR RENO = reupno) R ");
-			buff.append("	), member m, avatar a ");
-			buff.append("WHERE ");
-			buff.append("	remno = mno ");
-			buff.append("	AND m.ano = a.ano ");
+			buff.append("    		PRIOR RENO = reupno ");
+			buff.append("		ORDER SIBLINGS BY ");
+			buff.append("    		redate DESC) R ");
+			buff.append("	) ");
 			break;
 		}
 		
