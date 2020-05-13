@@ -25,10 +25,35 @@
 		$('#lbtn').click(function(){
 			$(location).attr('href', '/clsProj/member/login.cls');
 		});
+		
+		$('.ebtn').click(function(){
+			var str = $(this).parent().attr('id');
+			$('#reno').val(str);
+			$('#frm').attr('action', '/clsProj/reBoard/reBoardEdit.cls');
+		});
+		
+		$('.dbtn').click(function(){
+			var str = $(this).parent().attr('id');
+			$('#reno').val(str);
+			$('#frm').attr('action', '/clsProj/reBoard/reBoardDel.cls');
+		});
+		
+		$('.rbtn').click(function(){
+			var str = $(this).parent().attr('id');
+			$('#reno').val(str);
+			$('#frm').attr('action', '/clsProj/reBoard/reBoardReply.cls');
+		});
 	});
 </script>
 </head>
 <body>
+	<form method="post" action="" id="frm">
+		<input type="hidden" name="reno" id="reno">
+		<input type="hidden" name="body" id="body">
+		<input type="hidden" name="redate" id="redate">
+		<input type="hidden" name="avatar" id="avatar">
+	</form>
+	
 	<div class="w3-content mxw2">
 		<div class="w3-col">
 			<h2 class="w3-blue w3-center w3-padding">댓글 게시판</h2>
@@ -47,17 +72,17 @@
 			<%-- 
 			--%>
 			<c:forEach var="data" items="${LIST}">
-				<div style="padding-left: ${(data.step - 1) * 100}px;">
+				<div style="padding-left: ${data.step * 100}px;">
 					<div class="w3-col w3-border w3-margin-bottom" id="">
 						<div class="w3-col w-100 w3-center pd-10 w3-border-right">
 							<img class="h-80p w-auto w3-border" src="/clsProj/img/${data.avatar}">
-							<h5 class="w3-col w3-center"><b>${data.id}</b></h5>
+							<h5 class="w3-col w3-center w3-text-grey mg-0 pd-0">${data.id}</h5>
 						</div>
 						<div class="w3-rest pdh-10">
 							<div class="w3-col w3-border-bottom w3-border-light-blue">
 								<h6 class="w3-half w3-left-align w3-text-grey" style="margin: 0px; padding-right: 10px"><small>${data.sDate}</small></h6>
 							</div>
-							<div class="w3-col w3-border-bottom w3-margin-bottom w3-border-khaki">
+							<div class="w3-col w3-border-bottom mb10 w3-border-khaki">
 								<h6 class="w3-padding" id="body">${data.body}</h6>
 							</div>
 							<div class="w3-col" style="margin-bottom: 0px;" id="${data.reno}">
@@ -79,6 +104,15 @@
 					<h3 class="w3-padding w3-center">아직 작성된 글이 없습니다.</h3>
 				</div>
 			</c:if>
+		</div>
+		<div class="w3-center">
+			<div class="w3-bar w3-border">
+				<span class="w3-bar-item w3-button w3-hover-blue">&laquo;</span>
+				<span class="w3-bar-item w3-border-left w3-button w3-hover-blue">1</span>
+				<span class="w3-bar-item w3-border-left w3-button w3-hover-blue">2</span>
+				<span class="w3-bar-item w3-border-left w3-button w3-hover-blue">3</span>
+				<span class="w3-bar-item w3-border-left w3-button w3-hover-blue">&raquo;</span>
+			</div>
 		</div>
 	</div>
 </body>

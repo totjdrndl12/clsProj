@@ -65,25 +65,28 @@ select * from member;
 
 
 SELECT
-    *
+    rno, reno, id, remno, rebody, reupno, redate, step
 FROM
-    (SELECT
-        ROWNUM RNO, R.*
-    FROM
-        (SELECT
-            RENO, REMNO, REBODY, REUPNO, REDATE,
-            LEVEL step
+    (
+        SELECT
+            ROWNUM RNO, R.*
         FROM
-            REBOARD
-        WHERE
-            isShow = 'Y'
-        START WITH
-            REUPNO IS NULL
-        CONNECT BY
-            PRIOR RENO = REUPNO) R
+            (SELECT
+                RENO, REMNO, REBODY, REUPNO, REDATE,
+                (LEVEL -1) step, id, savename avatar
+            FROM
+                REBOARD, member m, avatar a
+            WHERE
+                isShow = 'Y'
+                AND m.ano = a.ano
+            START WITH
+                REUPNO IS NULL
+            CONNECT BY
+                PRIOR RENO = REUPNO) R
     )
 WHERE
     RNO BETWEEN 2 AND 3
-ORDER BY
-    RNO
+    AND mno = remno
 ;
+
+commit;
